@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Inner iFrame with Keyframes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        background-color: rebeccapurple;
+        color: white;
+      }
+
+      @keyframes bounce {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      .ball {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: white;
+        animation: bounce 1000ms infinite;
+        animation-delay: 2s;
+        animation-fill-mode: both;
+      }
+    </style>
+  </head>
+  <body>
+    <p>HI there</p>
+    <div class="ball"></div>
+  </body>
+</html>

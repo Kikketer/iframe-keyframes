@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>IE iFrame Keyframe Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        background-color: seashell;
+      }
+
+      #inner-root {
+        background-color: orange;
+      }
+      @keyframes slide {
+        0% {
+          left: 0;
+        }
+        100% {
+          left: 300px;
+        }
+      }
+      iframe {
+        border: 1px solid orange;
+        height: 200px;
+        position: absolute;
+        left: 0;
+        top: 200px;
+        animation: 3s slide;
+        animation-delay: 1s;
+        animation-fill-mode: forwards;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>IE iFrame Keyframe Test</h1>
+    <p>This is a simple test to see IE11 allows keyframes within an iFrame</p>
+
+    <div>
+      <p>Keyframes within a generated iFrame</p>
+      <iframe id="inner-root"> </iframe>
+    </div>
+
+    <script type="text/javascript">
+      var loadInners = function() {
+        var doc = document.getElementById('inner-root').contentDocument
+        console.log('Doc: ', doc)
+        var bod = doc.getElementsByTagName('body')[0]
+
+        // Create an iFrame within the generated one
+        var innerFrame = document.createElement('iframe')
+        innerFrame.src = './frame.html'
+        innerFrame.style.border = 'none'
+        bod.appendChild(innerFrame)
+      }
+
+      // Time about 6 seconds to load the inner iframe
+      setTimeout(function() {
+        loadInners()
+      }, 6000)
+    </script>
+  </body>
+</html>
